@@ -73,8 +73,8 @@ class Record:
 
 
     def __str__(self):
-        birthday = f"birthday: {self.birthday}" if self.birthday else ""
-        return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}, {birthday}"
+        birthday = f", birthday: {self.birthday}" if self.birthday else ""
+        return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}{birthday}"
 
 class AddressBook(UserDict):
     def add_record(self, record:Record):
