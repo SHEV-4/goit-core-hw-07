@@ -95,7 +95,8 @@ class AddressBook(UserDict):
         for key,record in self.data.items():
             if not record.birthday:
                 continue
-            birthday_now = datetime(day=record.birthday.value.day,month=record.birthday.value.month,year=day_now.year).date()
+            birthday_dt = datetime.strptime(record.birthday.value,"%d.%m.%Y").date()
+            birthday_now = birthday_dt.replace(year=day_now.year)
             diff = (birthday_now - day_now).days
             if 0 <= diff <= 7:
                 if birthday_now.weekday() == 5:
